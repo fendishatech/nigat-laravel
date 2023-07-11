@@ -1,5 +1,5 @@
 @php
-    $menuItems = [['url' => '/home', 'label' => 'Home', 'icon' => 'fa-home'], ['url' => '/users', 'label' => 'Users', 'icon' => 'fa-user-circle'], ['url' => '/clients', 'label' => 'Clients', 'icon' => 'fa-users'], ['url' => '/members', 'label' => 'Members', 'icon' => 'fa-id-badge']];
+    $menuItems = [['url' => '/home', 'label' => 'Home', 'icon' => 'fa-home'], ['url' => '/jobs', 'label' => 'Jobs', 'icon' => 'fa-users'], ['url' => '/blogs', 'label' => 'Blogs', 'icon' => 'fa-users'], ['url' => '/users', 'label' => 'Users', 'icon' => 'fa-user-circle'], ['url' => '/members', 'label' => 'Members', 'icon' => 'fa-id-badge'], ['url' => '/categories', 'label' => 'Categories', 'icon' => 'fa-id-badge']];
 @endphp
 
 
@@ -15,4 +15,3 @@
         @endforeach
     </ul>
 </div>
-{{-- <a href="/home" class="w-full"> <i class="fa fa-home mr-3" aria-hidden="true"></i> Home</a> --}}

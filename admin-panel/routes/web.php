@@ -24,6 +24,8 @@ Route::middleware(['loginAuth'])->group(function () {
     Route::get("/home", [HomeController::class, "index"]);
     // user resources
     Route::resource('users', UserController::class);
-    Route::resource('clients', ClientController::class);
     Route::resource('members', MemberController::class);
+    Route::resource('jobs', MemberController::class);
+    Route::resource('blogs', MemberController::class);
+    Route::resource('categories', MemberController::class);
 });
