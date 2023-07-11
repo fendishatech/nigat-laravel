@@ -1,0 +1,93 @@
+@font-face {
+  font-family: 'Hiwua';
+  src: url('../fonts/hiwua.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Sabean';
+  src: url('../fonts/sabaean.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Zelan';
+  src: url('../fonts/zelan.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Washrab';
+  src: url('../fonts/washrab.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Fantuwua';
+  src: url('../fonts/fantuwua.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Tint';
+  src: url('../fonts/tint.ttf') format('truetype');
+}
+
+
+:root {
+  --font-hiwua: 'Hiwua';
+  --font-sabean: 'Sabean';
+  --font-zelan: 'Zelan';
+  --font-washerab: 'Washerab';
+  --font-fantuwua: 'Fantuwua';
+  --font-tint: 'Tint';
+}
+
+.hiwua {
+    font-family: var(--font-hiwua);
+}
+.sabean {
+    font-family: var(--font-sabean);
+}
+
+.zelan {
+    font-family: var(--font-zelan);
+}
+
+.wahsrab {
+    font-family: var(--font-wahsrab);
+}
+
+.fantuwua {
+    font-family: var(--font-fantuwua);
+}
+
+.tint {
+    font-family: var(--font-tint);
+}
+
+
+/* Works on Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: rgb(202 138 4) rgb(22, 22, 21);
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 4px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgb(19, 18, 18);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgb(202 138 4);
+  border-radius: 30px;
+}
+
+/* Hero section */
+.hero-section-bg {
+  background-image: url("../images/saving-1.jpg");
+}
+
+
+.active {
+  background-color: #fff;
+}
