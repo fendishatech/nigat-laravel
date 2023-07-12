@@ -17,7 +17,7 @@ class MemberSeeder extends Seeder
             'first_name' => 'John',
             'last_name' => 'Doe',
             'email' => 'john.doe@example.com',
-            'phone_no' => '123-456-7890',
+            'phone_no' => '0911121314',
             'password' => bcrypt('password'),
         ]);
 
@@ -25,7 +25,7 @@ class MemberSeeder extends Seeder
             'first_name' => 'Jane',
             'last_name' => 'Doe',
             'email' => 'jane.doe@example.com',
-            'phone_no' => '098-765-4321',
+            'phone_no' => '0911121315',
             'password' => bcrypt('password'),
         ]);
     }

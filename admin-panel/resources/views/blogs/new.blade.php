@@ -3,109 +3,135 @@
 @endsection
 
 @section('page_title')
-    Add New User
+    Add New Blog
+@endsection
+
+@section('head_links')
+    <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.3.7/quill.js"></script>
 @endsection
 
 @section('content')
     <div class="w-full px-10 flex items-center justify-center bg-slate-100">
-        <form class="w-full my-8 rounded-lg bg-white" action="{{ url('/users') }}" method="POST">
+        <form class="w-full my-8 rounded-lg bg-white" action="{{ url('/blogs') }}" method="POST">
             @csrf
             <h2 class="mt-6 text-2xl text-center text-gray-400 mb-8">
-                Add New User
+                Add New Blog
             </h2>
             <div class="px-12 pb-10">
-                {{-- first_name || last_name --}}
-                <div class="mb-4 flex items-center gap-6">
-                    <div class="w-1/2">
-                        <label class="block text-gray-700 font-bold mb-2" for="store_name">
-                            First Name
-                        </label>
-                        <div class="relative">
-                            <input class="w-full px-4 py-2 pr-8 rounded shadow border border-gray-400" type="text"
-                                name="first_name" min="1" value="{{ old('first_name') }}">
-                            @if ($errors->has('first_name'))
-                                <span class="text-sm text-red-400">{{ $errors->first('first_name') }}</span>
-                            @endif
-                        </div>
-                    </div>
-                    <div class=" w-1/2">
-                        <label class="block text-gray-700 font-bold mb-2" for="store_name">
-                            Last Name
-                        </label>
-                        <div class="relative">
-                            <input class="w-full px-4 py-2 pr-8 rounded shadow border border-gray-400" type="text"
-                                name="last_name" min="1" value="{{ old('last_name') }}">
-                            @if ($errors->has('last_name'))
-                                <span class="text-sm text-red-400">{{ $errors->first('last_name') }}</span>
-                            @endif
-                        </div>
+                {{-- Title --}}
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-bold mb-2" for="title">
+                        Title
+                    </label>
+                    <div class="relative">
+                        <input class="w-full px-4 py-2 pr-8 rounded shadow border border-gray-400" type="text"
+                            name="title" value="{{ old('title') }}">
+                        @if ($errors->has('title'))
+                            <span class="text-sm text-red-400">{{ $errors->first('title') }}</span>
+                        @endif
                     </div>
                 </div>
-                {{-- email || phone_no --}}
-                <div class="mb-4 flex items-center gap-6">
-                    <div class="w-1/2">
-                        <label class="block text-gray-700 font-bold mb-2" for="store_name">
-                            Email
-                        </label>
-                        <div class="relative">
-                            <input class="w-full px-4 py-2 pr-8 rounded shadow border border-gray-400" type="text"
-                                name="email" min="1" value="{{ old('email') }}">
-                            @if ($errors->has('email'))
-                                <span class="text-sm text-red-400">{{ $errors->first('email') }}</span>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="w-1/2">
-                        <label class="block text-gray-700 font-bold mb-2" for="store_name">
-                            Phone No
-                        </label>
-                        <div class="relative">
-                            <input class="w-full px-4 py-2 pr-8 rounded shadow border border-gray-400" type="text"
-                                name="phone_no" min="1" value="{{ old('phone_no') }}">
-                            @if ($errors->has('phone_no'))
-                                <span class="text-sm text-red-400">{{ $errors->first('phone_no') }}</span>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-                {{-- Password || Userrole --}}
-                <div class="mb-4 flex items-start gap-6">
-                    <div class="w-1/2">
-                        <label class="block text-gray-700 font-bold mb-2" for="store_name">
-                            Password
-                        </label>
-                        <div class="relative">
-                            <input class="w-full px-4 py-2 pr-8 rounded shadow border border-gray-400" type="text"
-                                name="password" min="1" value="{{ old('password') }}">
-                            @if ($errors->has('password'))
-                                <div class="text-red-400 text-sm mb-2">{{ $errors->first('password') }}</div>
-                            @endif
-                            <p class="mt-2 text-sm text-orange-400">Password must be betwwen 6 upto 20 characters long and
-                                must
-                                contain a small letter, a capital letter and special characters (@$!%*?&)!</p>
-                        </div>
-                    </div>
-                    <div class="w-1/2">
-                        <label class="block text-gray-700 font-bold mb-2" for="item_id">
-                            User Role
-                        </label>
-                        <div class="relative">
-                            <select
-                                class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
-                                id="item_id" name="user_role">
-                                <option value="user">User</option>
-                                <option value="admin">Admin</option>
-                            </select>
-                        </div>
-                    </div>
 
+                {{-- Content --}}
+                <div id="editor" style=height: 200px></div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-bold mb-2" for="content">
+                        Content
+                    </label>
+                    <div class="relative">
+                        <textarea class="w-full px-4 py-2 pr-8 rounded shadow border border-gray-400" name="content" rows="8">{{ old('content') }}</textarea>
+                        @if ($errors->has('content'))
+                            <span class="text-sm text-red-400">{{ $errors->first('content') }}</span>
+                        @endif
+                    </div>
                 </div>
-                {{-- User role --}}
+
+                {{-- Published At --}}
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-bold mb-2" for="published_at">
+                        Published At
+                    </label>
+                    <div class="relative">
+                        <input class="w-full px-4 py-2 pr-8 rounded shadow border border-gray-400" type="datetime-local"
+                            name="published_at" value="{{ old('published_at') }}">
+                        @if ($errors->has('published_at'))
+                            <span class="text-sm text-red-400">{{ $errors->first('published_at') }}</span>
+                        @endif
+                    </div>
+                </div>
+
+                {{-- Category --}}
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-bold mb-2" for="category_id">
+                        Category
+                    </label>
+                    <div class="relative">
+                        <select class="w-full px-4 py-2 pr-8 rounded shadow border border-gray-400" name="category_id">
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}"
+                                    {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                                    {{ $category->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @if ($errors->has('category_id'))
+                            <span class="text-sm text-red-400">{{ $errors->first('category_id') }}</span>
+                        @endif
+                    </div>
+                </div>
+
+                {{-- User --}}
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-bold mb-2" for="user_id">
+                        User
+                    </label>
+                    <div class="relative">
+                        <select class="w-full px-4 py-2 pr-8 rounded shadow border border-gray-400" name="user_id">
+                            @foreach ($users as $user)
+                                <option value="{{ $user->id }}" {{ old('user_id') == $user->id ? 'selected' : '' }}>
+                                    {{ $user->first_name }} {{ $user->last_name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @if ($errors->has('user_id'))
+                            <span class="text-sm text-red-400">{{ $errors->first('user_id') }}</span>
+                        @endif
+                    </div>
+                </div>
+
+                {{-- Is Featured --}}
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-bold mb-2" for="is_featured">
+                        Is Featured
+                    </label>
+                    <div class="relative">
+                        <input type="checkbox" name="is_featured" {{ old('is_featured') ? 'checked' : '' }}>
+                        @if ($errors->has('is_featured'))
+                            <span class="text-sm text-red-400">{{ $errors->first('is_featured') }}</span>
+                        @endif
+                    </div>
+                </div>
+
+                {{-- Submit Button --}}
+                <div class="mb-4">
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        Create Blog Post
+                    </button>
+                </div>
 
                 <button type="submit" class="w-full py-2 mt-8 rounded-full bg-red-600 text-gray-100 focus:outline-none">
-                    Add User
+                    Add Blog
                 </button>
             </div>
         </form>
     </div>
+@endsection
+
+@section('script_section')
+    <script>
+        var quill = new Quill('#editor', {
+            theme: 'snow'
+        });
+    </script>
 @endsection

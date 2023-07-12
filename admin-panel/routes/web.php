@@ -1,8 +1,11 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\JobController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -25,7 +28,7 @@ Route::middleware(['loginAuth'])->group(function () {
     // user resources
     Route::resource('users', UserController::class);
     Route::resource('members', MemberController::class);
-    Route::resource('jobs', MemberController::class);
-    Route::resource('blogs', MemberController::class);
-    Route::resource('categories', MemberController::class);
+    Route::resource('jobs', JobController::class);
+    Route::resource('blogs', BlogController::class);
+    Route::resource('categories', CategoryController::class);
 });
