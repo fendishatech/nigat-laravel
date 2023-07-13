@@ -8,7 +8,7 @@
 
 @section('content')
     <div class="w-full px-10 flex items-center justify-center bg-slate-100">
-        <form class="w-full my-8 rounded-lg bg-white" action="{{ url('/users') }}" method="POST">
+        <form class="w-full my-8 rounded-lg bg-white" action="{{ url('/categories') }}" method="POST">
             @csrf
             <h2 class="mt-6 text-2xl text-center text-gray-400 mb-8">
                 Add New User
