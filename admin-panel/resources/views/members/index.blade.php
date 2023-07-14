@@ -30,7 +30,7 @@
                                         <th class="px-6 py-2 text-xs text-gray-500">ID</th>
                                         <th class="px-6 py-2 text-xs text-gray-500">First Name</th>
                                         <th class="px-6 py-2 text-xs text-gray-500">Last Name</th>
-                                        <th class="px-6 py-2 text-xs text-gray-500">Role</th>
+                                        <th class="px-6 py-2 text-xs text-gray-500">Phone No</th>
                                         <th class="px-6 py-2 text-xs text-gray-500">Edit</th>
                                         <th class="px-6 py-2 text-xs text-gray-500">Delete</th>
                                     </tr>
@@ -51,7 +51,7 @@
                                                 </div>
                                             </td>
                                             <td class="px-6 py-4 text-sm text-gray-500">
-                                                {{ $member->member_role }}
+                                                {{ $member->phone_no }}
                                             </td>
                                             <td class="px-6 py-4">
                                                 <a href="{{ url('/members/' . $member->id . '/edit') }}"
