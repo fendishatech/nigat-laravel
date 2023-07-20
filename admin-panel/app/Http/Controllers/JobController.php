@@ -91,17 +91,42 @@ class JobController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Job $job)
+    public function edit(string $id)
     {
-        //
+        $job = Job::find($id);
+        return view('jobs.edit', ['job' => $job]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Job $job)
+    public function update(Request $request, string $id)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'company' => 'required',
+            'description' => 'required',
+            'location' => 'required',
+            'requirement' => 'required',
+            'employment_type' => 'required',
+            'education' => 'required',
+            'skills' => 'nullable',
+            'experience_years' => 'nullable|numeric|min:0',
+            'experience_months' => 'nullable|numeric|min:0|max:11',
+            'salary' => 'nullable',
+            'deadline' => 'required|date',
+            'benefits' => 'nullable',
+            'contact_email' => 'required|email',
+        ]);
+
+        if ($validatedData) {
+
+            $job = Job::find($id);
+            $job->update($request->all());
+            return redirect('/jobs')->with('success', 'Job Updated successfully.');
+        } else {
+            return redirect()->back()->withErrors("default error")->withInput();
+        }
     }
 
     /**

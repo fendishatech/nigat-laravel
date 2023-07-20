@@ -28,9 +28,9 @@
                                 <thead class="bg-gray-50">
                                     <tr>
                                         <th class="px-6 py-2 text-xs text-gray-500">ID</th>
-                                        <th class="px-6 py-2 text-xs text-gray-500">First Name</th>
-                                        <th class="px-6 py-2 text-xs text-gray-500">Last Name</th>
-                                        <th class="px-6 py-2 text-xs text-gray-500">Role</th>
+                                        <th class="px-6 py-2 text-xs text-gray-500">Title</th>
+                                        <th class="px-6 py-2 text-xs text-gray-500">Company</th>
+                                        <th class="px-6 py-2 text-xs text-gray-500">Deadline</th>
                                         <th class="px-6 py-2 text-xs text-gray-500">Edit</th>
                                         <th class="px-6 py-2 text-xs text-gray-500">Delete</th>
                                     </tr>
@@ -42,16 +42,16 @@
                                             <td class="px-6 py-4 text-sm text-gray-500">{{ $loop->iteration }}</td>
                                             <td class="px-6 py-4">
                                                 <div class="text-sm text-gray-900">
-                                                    {{ $job->first_name }}
+                                                    {{ $job->title }}
                                                 </div>
                                             </td>
                                             <td class="px-6 py-4">
                                                 <div class="text-sm text-gray-500">
-                                                    {{ $job->last_name }}
+                                                    {{ $job->company }}
                                                 </div>
                                             </td>
                                             <td class="px-6 py-4 text-sm text-gray-500">
-                                                {{ $job->job_role }}
+                                                {{ $job->deadline }}
                                             </td>
                                             <td class="px-6 py-4">
                                                 <a href="{{ url('/jobs/' . $job->id . '/edit') }}"
